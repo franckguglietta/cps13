@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cabinet d'expertise-comptable à La Fare-les-Oliviers. Accompagnement fiscal, social et comptable pour créateurs, indépendants, TPE & PME dans le Pays Salonnais.">
+    <title>Les Comptas du Pays Salonnais - Expert-comptable La Fare-les-Oliviers</title>
+
+    <style>
+        /* ==========================================
+           RESET & BASE
+        ========================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ==========================================
+           DESIGN SYSTEM - Variables CSS
+        ========================================== */
+        :root {
+            --white: #ffffff;
+            --primary: #003959;
+            --accent: #00b8c0;
+
+            --bg: #ffffff;
+            --surface: #f6f9fa;
+            --text: #0f1f2a;
+            --muted: #5f7a8a;
+
+            --radius: 16px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --maxw: 1100px;
+        }
+
+        /* ==========================================
+           TYPOGRAPHIE
+        ========================================== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary);
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; }
+        h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 1.5rem; }
+        h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); margin-bottom: 1rem; }
+
+        p { margin-bottom: 1rem; color: var(--text); }
+
+        /* ==========================================
+           LAYOUT
+        ========================================== */
+        .container {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        @media (min-width: 768px) {
+            section {
+                padding: 6rem 0;
+            }
+        }
+
+        /* ==========================================
+           HEADER - Sticky Navigation
+        ========================================== */
+        header {
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            max-width: var(--maxw);
+            margin: 0 auto;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-desktop {
+            display: none;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-desktop a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-desktop a:hover {
+            color: var(--accent);
+        }
+
+        .header-actions {
+            display: none;
+            gap: 1rem;
+        }
+
+        /* Menu Burger */
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Mobile Menu */
+        .nav-mobile {
+            position: fixed;
+            top: 71px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .nav-mobile.active {
+            max-height: 500px;
+        }
+
+        .nav-mobile ul {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .nav-mobile li {
+            padding: 0;
+        }
+
+        .nav-mobile a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .nav-mobile a:hover {
+            background: var(--surface);
+            color: var(--accent);
+        }
+
+        .nav-mobile .btn {
+            margin: 0.5rem 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
+
+            .nav-desktop {
+                display: flex;
+            }
+
+            .header-actions {
+                display: flex;
+            }
+
+            .nav-mobile {
+                display: none;
+            }
+        }
+
+        /* ==========================================
+           BUTTONS
+        ========================================== */
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 1.75rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 184, 192, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 57, 89, 0.3);
+        }
+
+        .btn:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .btn.loading {
+            opacity: 0.7;
+            cursor: wait;
+        }
+
+        /* ==========================================
+           HERO SECTION
+        ========================================== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #004d6d 100%);
+            color: var(--white);
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero-text {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .myunisoft-notice {
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        @media (min-width: 640px) {
+            .hero-actions {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                padding: 8rem 0;
+            }
+        }
+
+        /* ==========================================
+           PRESENTATION EXPRESS
+        ========================================== */
+        .presentation {
+            background: var(--surface);
+        }
+
+        .presentation-intro {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            font-size: 1.125rem;
+            line-height: 1.8;
+        }
+
+        .engagements-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .engagements-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .engagement-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .engagement-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .engagement-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+        }
+
+        .engagement-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .engagement-card p {
+            color: var(--muted);
+        }
+
+        /* ==========================================
+           SERVICES
+        ========================================== */
+        .services {
+            background: var(--white);
+        }
+
+        .services h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .service-card {
+            background: var(--surface);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-3px);
+            border-left-color: var(--primary);
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+            color: var(--text);
+        }
+
+        .service-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .services-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* ==========================================
+           EXPERT
+        ========================================== */
+        .expert {
+            background: var(--surface);
+        }
+
+        .expert-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .expert-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .expert-photo {
+            text-align: center;
+        }
+
+        .expert-photo-placeholder {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .expert-info h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .expert-bio {
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .expert-values {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .value-badge {
+            padding: 0.5rem 1rem;
+            background: var(--white);
+            border-radius: 50px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* ==========================================
+           MAP & CONTACT INFO
+        ========================================== */
+        .map-contact {
+            background: var(--white);
+        }
+
+        .map-contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .map-contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .contact-info {
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item strong {
+            display: block;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .map-placeholder {
+            background: var(--surface);
+            height: 400px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            font-size: 1.125rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .map-placeholder iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: var(--radius);
+        }
+
+        /* ==========================================
+           CONTACT FORM
+        ========================================== */
+        .contact-form-section {
+            background: var(--surface);
+        }
+
+        .contact-form-section h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .form-row.two-col {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid #e0e7ed;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-checkbox input[type="checkbox"] {
+            margin-top: 0.25rem;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .form-checkbox label {
+            font-size: 0.9rem;
+            color: var(--muted);
+            cursor: pointer;
+        }
+
+        .form-success {
+            display: none;
+            padding: 1rem;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        /* ==========================================
+           FOOTER
+        ========================================== */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .footer-section h4 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-nav {
+            list-style: none;
+        }
+
+        .footer-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            display: inline;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ==========================================
+           ACCESSIBILITY & ANIMATIONS
+        ========================================== */
+        :focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        /* ==========================================
+           UTILITY CLASSES
+        ========================================== */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- ==========================================
+         HEADER - Navigation
+    ========================================== -->
+    <header>
+        <div class="header-content">
+            <a href="#accueil" aria-label="Retour à l'accueil">
+                <img src="assets/Logo_CPS13_final.svg" alt="Les Comptas du Pays Salonnais" class="logo">
+            </a>
+
+            <nav class="nav-desktop" aria-label="Navigation principale">
+                <a href="#accueil">Accueil</a>
+                <a href="#a-propos">À propos</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+                <button type="button" class="btn btn-outline" id="myunisoft-btn-header" aria-label="Accéder à MyUnisoft">
+                    Accéder à MyUnisoft
+                </button>
+                <a href="tel:0490XXXXXX" class="btn btn-primary">04 90 XX XX XX</a>
+            </div>
+
+            <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <nav class="nav-mobile" id="nav-mobile" aria-label="Navigation mobile">
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#a-propos">À propos</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button type="button" class="btn btn-outline" id="myunisoft-btn-mobile" style="width: calc(100% - 3rem);">
+                Accéder à MyUnisoft
+            </button>
+            <a href="tel:0490XXXXXX" class="btn btn-primary" style="width: calc(100% - 3rem);">04 90 XX XX XX</a>
+        </nav>
+    </header>
+
+    <!-- ==========================================
+         HERO SECTION
+    ========================================== -->
+    <section id="accueil" class="hero">
+        <div class="container">
+            <h1>Votre experte-comptable de confiance dans le Pays Salonnais</h1>
+            <p class="hero-subtitle">Accompagnement fiscal, social et comptable pour créateurs, indépendants, TPE & PME</p>
+            <p class="hero-text">Un cabinet de proximité, réactif, et à taille humaine, pour vous accompagner à chaque étape.</p>
+            <div class="hero-actions">
+                <a href="tel:0490XXXXXX" class="btn btn-accent">04 90 XX XX XX</a>
+                <a href="#contact" class="btn btn-primary">Demander votre premier rdv gratuit</a>
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <button type="button" class="btn btn-outline myunisoft-btn" id="myunisoft-btn-hero" style="background: rgba(255,255,255,0.1); color: white; border-color: white;">
+                        Accéder à MyUnisoft
+                    </button>
+                    <div class="myunisoft-notice" id="myunisoft-notice" style="display: none;">Lien en cours de configuration.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PRÉSENTATION EXPRESS
+    ========================================== -->
+    <section id="a-propos" class="presentation">
+        <div class="container">
+            <div class="presentation-intro">
+                <p><strong>Les Comptas du Pays Salonnais</strong> est un cabinet indépendant situé à La Fare-les-Oliviers. Fondé par Aurélie Savaides, expert-comptable diplômée, notre cabinet met l'accent sur la proximité, la clarté et la disponibilité.</p>
+            </div>
+
+            <div class="engagements-grid">
+                <div class="engagement-card">
+                    <div class="engagement-icon" aria-hidden="true">⚡</div>
+                    <h3>Réactivité</h3>
+                    <p>Réponses sous 24h à toutes vos questions</p>
+                </div>
+
+                <div class="engagement-card">
+                    <div class="engagement-icon" aria-hidden="true">💰</div>
+                    <h3>Tarifs transparents</h3>
+                    <p>Forfaits adaptés à votre activité</p>
+                </div>
+
+                <div class="engagement-card">
+                    <div class="engagement-icon" aria-hidden="true">🎯</div>
+                    <h3>Expertise multi-sectorielle</h3>
+                    <p>Tous secteurs d'activité accompagnés</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SERVICES
+    ========================================== -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Des services complets, du lancement de votre activité à son développement</h2>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Création d'entreprise</h3>
+                    <ul>
+                        <li>Choix de la structure juridique</li>
+                        <li>Rédaction des statuts</li>
+                        <li>Formalités d'immatriculation</li>
+                        <li>Prévisionnel financier</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>Comptabilité</h3>
+                    <ul>
+                        <li>Tenue comptable complète</li>
+                        <li>Révision des comptes</li>
+                        <li>Établissement des bilans</li>
+                        <li>Liasse fiscale</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>Fiscalité</h3>
+                    <ul>
+                        <li>Déclarations fiscales (TVA, IS, IR)</li>
+                        <li>Optimisation fiscale</li>
+                        <li>Contrôle fiscal & assistance</li>
+                        <li>Conseil en fiscalité</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>Social</h3>
+                    <ul>
+                        <li>Bulletins de paie</li>
+                        <li>Déclarations sociales</li>
+                        <li>Gestion administrative du personnel</li>
+                        <li>Conseil en droit social</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>Conseil & Pilotage</h3>
+                    <ul>
+                        <li>Tableaux de bord</li>
+                        <li>Analyse financière</li>
+                        <li>Prévisionnel & budgets</li>
+                        <li>Conseil stratégique</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="services-cta">
+                <a href="#contact" class="btn btn-primary">Rendez-vous offert !</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         EXPERT - Aurélie Savaides
+    ========================================== -->
+    <section class="expert">
+        <div class="container">
+            <div class="expert-content">
+                <div class="expert-photo">
+                    <div class="expert-photo-placeholder" aria-hidden="true">AS</div>
+                </div>
+
+                <div class="expert-info">
+                    <h2>Aurélie Savaides, votre partenaire comptable de proximité</h2>
+                    <div class="expert-bio">
+                        <p>Expert-comptable diplômée et inscrite à l'Ordre, j'ai fondé <strong>Les Comptas du Pays Salonnais</strong> avec une conviction : la comptabilité ne doit pas être une contrainte, mais un outil de pilotage et de sérénité.</p>
+                        <p>Après plusieurs années d'expérience dans des cabinets généralistes et en entreprise, j'ai choisi de créer une structure à taille humaine, centrée sur l'écoute, la pédagogie et la proximité.</p>
+                        <p>Mon objectif : vous accompagner avec réactivité, transparence et bienveillance, que vous soyez créateur, indépendant ou dirigeant de TPE/PME.</p>
+                    </div>
+
+                    <div class="expert-values">
+                        <span class="value-badge">Confidentialité</span>
+                        <span class="value-badge">Précision</span>
+                        <span class="value-badge">Réactivité</span>
+                        <span class="value-badge">Souplesse</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CARTE & COORDONNÉES
+    ========================================== -->
+    <section class="map-contact">
+        <div class="container">
+            <div class="map-contact-grid">
+                <div class="contact-info">
+                    <h3>Nos coordonnées</h3>
+
+                    <div class="contact-item">
+                        <strong>Adresse</strong>
+                        <p>65 rue des Petits Pins<br>13580 La Fare-les-Oliviers</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <strong>Téléphone</strong>
+                        <p><a href="tel:0490XXXXXX" style="color: var(--text); text-decoration: none;">04 90 XX XX XX</a></p>
+                    </div>
+
+                    <div class="contact-item">
+                        <strong>Horaires</strong>
+                        <p>Du lundi au vendredi : 9h – 18h</p>
+                    </div>
+
+                    <a href="https://www.google.com/maps/search/?api=1&query=65+rue+des+Petits+Pins+13580+La+Fare-les-Oliviers"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn btn-primary"
+                       style="margin-top: 1rem;">
+                        Itinéraire
+                    </a>
+                </div>
+
+                <div class="map-placeholder">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.8!2d5.1889!3d43.5519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c9ed8e0e0e0e0e%3A0x0!2s65%20Rue%20des%20Petits%20Pins%2C%2013580%20La%20Fare-les-Oliviers!5e0!3m2!1sfr!2sfr!4v1234567890"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Localisation du cabinet">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FORMULAIRE DE CONTACT
+    ========================================== -->
+    <section id="contact" class="contact-form-section">
+        <div class="container">
+            <h2>Une question ? Un projet ? Parlons-en.</h2>
+
+            <form class="contact-form" id="contact-form" novalidate>
+                <div class="form-success" id="form-success" role="alert">
+                    Merci pour votre message, nous reviendrons vers vous sous 24h.
+                </div>
+
+                <div class="form-row two-col">
+                    <div class="form-group">
+                        <label for="nom">Nom <span aria-label="requis">*</span></label>
+                        <input type="text" id="nom" name="nom" required aria-required="true">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prenom">Prénom <span aria-label="requis">*</span></label>
+                        <input type="text" id="prenom" name="prenom" required aria-required="true">
+                    </div>
+                </div>
+
+                <div class="form-row two-col">
+                    <div class="form-group">
+                        <label for="email">Email <span aria-label="requis">*</span></label>
+                        <input type="email" id="email" name="email" required aria-required="true">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telephone">Téléphone <span aria-label="requis">*</span></label>
+                        <input type="tel" id="telephone" name="telephone" required aria-required="true">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message <span aria-label="requis">*</span></label>
+                    <textarea id="message" name="message" required aria-required="true"></textarea>
+                </div>
+
+                <div class="form-checkbox">
+                    <input type="checkbox" id="rgpd" name="rgpd" required aria-required="true">
+                    <label for="rgpd">J'accepte que mes données soient utilisées pour me recontacter dans le cadre de ma demande. <span aria-label="requis">*</span></label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Envoyer mon message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FOOTER
+    ========================================== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Les Comptas du Pays Salonnais</h4>
+                    <p>Cabinet d'expertise-comptable</p>
+                    <p>65 rue des Petits Pins<br>13580 La Fare-les-Oliviers</p>
+                    <p>Tél : <a href="tel:0490XXXXXX">04 90 XX XX XX</a></p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul class="footer-nav">
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#a-propos">À propos</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Horaires</h4>
+                    <p>Du lundi au vendredi<br>9h00 - 18h00</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-links">
+                    <a href="#mentions-legales">Mentions légales</a>
+                    <a href="#politique-confidentialite">Politique de confidentialité</a>
+                    <a href="#cookies">Cookies</a>
+                </div>
+                <p>&copy; 2024 Les Comptas du Pays Salonnais - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         JAVASCRIPT
+    ========================================== -->
+    <script>
+        // ==========================================
+        // Configuration MyUnisoft
+        // ==========================================
+        const MYUNISOFT_URL = "A_REMPLACER";
+
+        // ==========================================
+        // Menu burger toggle
+        // ==========================================
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMobile = document.getElementById('nav-mobile');
+
+        menuToggle.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            this.classList.toggle('active');
+            navMobile.classList.toggle('active');
+        });
+
+        // Fermer le menu mobile lors du clic sur un lien
+        const mobileLinks = navMobile.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                navMobile.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // ==========================================
+        // MyUnisoft - Gestion des boutons
+        // ==========================================
+        function handleMyUnisoftClick(event) {
+            const button = event.currentTarget;
+
+            if (MYUNISOFT_URL === "A_REMPLACER") {
+                // Afficher le message de configuration
+                const notice = document.getElementById('myunisoft-notice');
+                if (notice) {
+                    notice.style.display = 'block';
+
+                    // Masquer le message après 3 secondes
+                    setTimeout(() => {
+                        notice.style.display = 'none';
+                    }, 3000);
+                }
+                return;
+            }
+
+            // Si l'URL est configurée, rediriger avec état loading
+            button.classList.add('loading');
+            button.disabled = true;
+
+            const originalText = button.textContent;
+            button.textContent = 'Chargement...';
+
+            // Simuler un délai de chargement (400-600ms)
+            const loadingDelay = 400 + Math.random() * 200;
+
+            setTimeout(() => {
+                window.location.href = MYUNISOFT_URL;
+            }, loadingDelay);
+        }
+
+        // Attacher les événements aux boutons MyUnisoft
+        const myunisoftBtns = document.querySelectorAll('.myunisoft-btn, #myunisoft-btn-header, #myunisoft-btn-mobile');
+        myunisoftBtns.forEach(btn => {
+            btn.addEventListener('click', handleMyUnisoftClick);
+        });
+
+        // ==========================================
+        // Formulaire de contact
+        // ==========================================
+        const contactForm = document.getElementById('contact-form');
+        const formSuccess = document.getElementById('form-success');
+
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Validation simple
+            const nom = document.getElementById('nom').value.trim();
+            const prenom = document.getElementById('prenom').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const telephone = document.getElementById('telephone').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const rgpd = document.getElementById('rgpd').checked;
+
+            if (!nom || !prenom || !email || !telephone || !message || !rgpd) {
+                alert('Veuillez remplir tous les champs obligatoires et accepter la politique de confidentialité.');
+                return;
+            }
+
+            // Validation email basique
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Veuillez saisir une adresse email valide.');
+                return;
+            }
+
+            // Afficher le message de succès
+            formSuccess.classList.add('show');
+
+            // Réinitialiser le formulaire
+            contactForm.reset();
+
+            // Faire défiler jusqu'au message de succès
+            formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            // Masquer le message après 5 secondes
+            setTimeout(() => {
+                formSuccess.classList.remove('show');
+            }, 5000);
+        });
+
+        // ==========================================
+        // Smooth scroll pour les ancres
+        // ==========================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+
+                // Ignorer les ancres sans ID valide
+                if (href === '#' || href === '#mentions-legales' || href === '#politique-confidentialite' || href === '#cookies') {
+                    e.preventDefault();
+                    return;
+                }
+
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ==========================================
+        // Header shadow on scroll
+        // ==========================================
+        let lastScroll = 0;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 10) {
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = 'var(--shadow)';
+            }
+
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
