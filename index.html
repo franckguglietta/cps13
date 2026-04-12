@@ -134,7 +134,14 @@
 
         .header-actions {
             display: none;
-            gap: 1rem;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .header-actions .btn {
+            padding: 0.75rem 1.25rem;
+            font-size: 0.9rem;
+            white-space: nowrap;
         }
 
         /* Menu Burger */
@@ -500,38 +507,12 @@
         }
 
         .expert-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        @media (min-width: 768px) {
-            .expert-content {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .expert-photo {
-            text-align: center;
-        }
-
-        .expert-photo-placeholder {
-            width: 200px;
-            height: 200px;
+            max-width: 900px;
             margin: 0 auto;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: var(--white);
-            box-shadow: var(--shadow);
         }
 
-        .expert-info h2 {
-            margin-bottom: 1.5rem;
+        .expert-info {
+            text-align: left;
         }
 
         .expert-bio {
@@ -1041,10 +1022,6 @@
     <section class="expert">
         <div class="container">
             <div class="expert-content">
-                <div class="expert-photo">
-                    <div class="expert-photo-placeholder" aria-hidden="true">AS</div>
-                </div>
-
                 <div class="expert-info">
                     <div class="expert-bio">
                         <p>Le cabinet a été fondé en juillet 2023 par Aurélie et Benoît, avec une ambition commune : proposer un accompagnement plus humain, plus clair et plus proche des entrepreneurs.</p>
