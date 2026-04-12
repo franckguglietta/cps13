@@ -865,8 +865,11 @@
             </nav>
 
             <div class="header-actions">
-                <button type="button" class="btn btn-outline" id="myunisoft-btn-header" aria-label="Accéder à MyUnisoft">
-                    Accéder à MyUnisoft
+                <button type="button" class="btn btn-outline" id="myunisoft-btn-header" aria-label="Mon espace comptabilité">
+                    Mon espace comptabilité
+                </button>
+                <button type="button" class="btn btn-outline" id="facturation-btn-header" aria-label="Mon espace facturation">
+                    Mon espace facturation
                 </button>
                 <a href="tel:0982313838" class="btn btn-primary">09 82 31 38 38</a>
             </div>
@@ -886,7 +889,10 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button type="button" class="btn btn-outline" id="myunisoft-btn-mobile" style="width: calc(100% - 3rem);">
-                Accéder à MyUnisoft
+                Mon espace comptabilité
+            </button>
+            <button type="button" class="btn btn-outline" id="facturation-btn-mobile" style="width: calc(100% - 3rem);">
+                Mon espace facturation
             </button>
             <a href="tel:0982313838" class="btn btn-primary" style="width: calc(100% - 3rem);">09 82 31 38 38</a>
         </nav>
@@ -903,12 +909,6 @@
             <div class="hero-actions">
                 <a href="tel:0982313838" class="btn btn-accent">09 82 31 38 38</a>
                 <a href="#contact" class="btn btn-primary">Demander votre premier rdv gratuit</a>
-                <div style="display: flex; flex-direction: column; align-items: center;">
-                    <button type="button" class="btn btn-outline myunisoft-btn" id="myunisoft-btn-hero" style="background: rgba(255,255,255,0.1); color: white; border-color: white;">
-                        Accéder à MyUnisoft
-                    </button>
-                    <div class="myunisoft-notice" id="myunisoft-notice" style="display: none;">Lien en cours de configuration.</div>
-                </div>
             </div>
         </div>
     </section>
@@ -919,14 +919,20 @@
     <section id="a-propos" class="presentation">
         <div class="container">
             <div class="presentation-intro">
-                <p><strong>Les Comptas du Pays Salonnais</strong> est un cabinet indépendant situé à La Fare-les-Oliviers. Fondé par Aurélie Savaides, expert-comptable diplômée, notre cabinet met l'accent sur la proximité, la clarté et la disponibilité.</p>
+                <p><strong>Les Compta du Pays Salonais</strong> est un cabinet indépendant situé à La Fare-les-Oliviers, créé en juillet 2023.</p>
+                <p>Le cabinet a été fondé par Benoît, expert-comptable, garant de la qualité et de la conformité de vos dossiers, aux côtés d'Aurélie, qui accompagne les clients au quotidien avec une approche simple et accessible.</p>
+                <p>Notre équipe, composée de collaborateurs et d'assistants comptables, est à vos côtés pour vous accompagner avec proximité, clarté et disponibilité.</p>
+                <p>Dans un contexte où de plus en plus de solutions sont entièrement en ligne, nous avons fait le choix de rester présents physiquement. Le cabinet vous accueille et reste disponible pour vous recevoir, échanger et vous accompagner en toute simplicité.</p>
+                <p style="margin-top: 2rem;"><strong>Notre porte vous est ouverte :</strong><br>
+                65 rue des Petits Pins – ZA les Barrales<br>
+                13580 La Fare-les-Oliviers</p>
             </div>
 
             <div class="engagements-grid">
                 <div class="engagement-card">
                     <div class="engagement-icon" aria-hidden="true">⚡</div>
-                    <h3>Réactivité</h3>
-                    <p>Réponses sous 24h à toutes vos questions</p>
+                    <h3>Réactivité sous 48h</h3>
+                    <p>Et parce que certaines situations ne peuvent pas attendre, nous restons joignables lorsque vous en avez besoin.</p>
                 </div>
 
                 <div class="engagement-card">
@@ -938,7 +944,7 @@
                 <div class="engagement-card">
                     <div class="engagement-icon" aria-hidden="true">🎯</div>
                     <h3>Expertise multi-sectorielle</h3>
-                    <p>Tous secteurs d'activité accompagnés</p>
+                    <p>Nous accompagnons une grande diversité d'activités, avec des besoins et des réalités différentes.</p>
                 </div>
             </div>
         </div>
@@ -949,13 +955,18 @@
     ========================================== -->
     <section id="services" class="services">
         <div class="container">
-            <h2>Des services complets, du lancement de votre activité à son développement</h2>
+            <h2>Nos services</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.125rem; line-height: 1.8;">
+                Un accompagnement complet, à chaque étape de votre activité.<br>
+                Création d'entreprise, comptabilité, fiscalité, social ou outils numériques : nous sommes à vos côtés avec des solutions claires, accessibles et adaptées à votre quotidien.
+            </p>
 
             <div class="services-grid">
                 <div class="service-card">
                     <h3>Création d'entreprise</h3>
+                    <p style="margin-bottom: 1rem; font-style: italic; color: var(--muted);">Bien démarrer, c'est poser les bonnes bases dès le départ.</p>
                     <ul>
-                        <li>Choix de la structure juridique</li>
+                        <li>Choix de la structure</li>
                         <li>Rédaction des statuts</li>
                         <li>Formalités d'immatriculation</li>
                         <li>Prévisionnel financier</li>
@@ -964,41 +975,56 @@
 
                 <div class="service-card">
                     <h3>Comptabilité</h3>
+                    <p style="margin-bottom: 1rem; font-style: italic; color: var(--muted);">Une comptabilité claire et tenue avec rigueur, pour vous libérer l'esprit au quotidien.</p>
                     <ul>
-                        <li>Tenue comptable complète</li>
+                        <li>Tenue comptable</li>
                         <li>Révision des comptes</li>
-                        <li>Établissement des bilans</li>
-                        <li>Liasse fiscale</li>
+                        <li>Établissement des états annuels (bilan, compte de résultat…)</li>
+                        <li>Déclarations fiscales annexes</li>
                     </ul>
                 </div>
 
                 <div class="service-card">
                     <h3>Fiscalité</h3>
+                    <p style="margin-bottom: 1rem; font-style: italic; color: var(--muted);">Nous vous aidons à y voir plus clair pour gérer votre fiscalité sereinement, dans le respect des règles.</p>
                     <ul>
                         <li>Déclarations fiscales (TVA, IS, IR)</li>
-                        <li>Optimisation fiscale</li>
-                        <li>Contrôle fiscal & assistance</li>
-                        <li>Conseil en fiscalité</li>
+                        <li>Conseils pour votre fiscalité</li>
+                        <li>Assistance en cas de contrôle</li>
+                        <li>Conseil fiscal</li>
                     </ul>
                 </div>
 
                 <div class="service-card">
                     <h3>Social</h3>
+                    <p style="margin-bottom: 1rem; font-style: italic; color: var(--muted);">Un accompagnement fiable pour vos obligations sociales, avec simplicité et réactivité.</p>
                     <ul>
-                        <li>Bulletins de paie</li>
+                        <li>Établissement des bulletins de paie</li>
                         <li>Déclarations sociales</li>
-                        <li>Gestion administrative du personnel</li>
-                        <li>Conseil en droit social</li>
+                        <li>Accompagnement en droit social</li>
+                        <li>Conseils liés à vos situations employeur</li>
                     </ul>
                 </div>
 
                 <div class="service-card">
-                    <h3>Conseil & Pilotage</h3>
+                    <h3>Outils numériques</h3>
+                    <p style="margin-bottom: 1rem; font-style: italic; color: var(--muted);">Des outils simples et modernes pour vous faire gagner du temps et préparer l'avenir.</p>
                     <ul>
-                        <li>Tableaux de bord</li>
-                        <li>Analyse financière</li>
-                        <li>Prévisionnel & budgets</li>
-                        <li>Conseil stratégique</li>
+                        <li>Mise en place d'outils de gestion</li>
+                        <li>Facturation électronique</li>
+                        <li>Suivi de votre activité en temps réel</li>
+                        <li>Solutions adaptées à votre organisation</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>Suivi & accompagnement</h3>
+                    <p style="margin-bottom: 1rem; font-style: italic; color: var(--muted);">Des échanges réguliers et des repères concrets pour avancer avec plus de visibilité.</p>
+                    <ul>
+                        <li>Tableaux de suivi</li>
+                        <li>Analyse de votre activité</li>
+                        <li>Prévisionnels et budgets</li>
+                        <li>Conseils pour développer votre entreprise</li>
                     </ul>
                 </div>
             </div>
@@ -1020,11 +1046,13 @@
                 </div>
 
                 <div class="expert-info">
-                    <h2>Aurélie Savaides, votre partenaire comptable de proximité</h2>
                     <div class="expert-bio">
-                        <p>Expert-comptable diplômée et inscrite à l'Ordre, j'ai fondé <strong>Les Comptas du Pays Salonnais</strong> avec une conviction : la comptabilité ne doit pas être une contrainte, mais un outil de pilotage et de sérénité.</p>
-                        <p>Après plusieurs années d'expérience dans des cabinets généralistes et en entreprise, j'ai choisi de créer une structure à taille humaine, centrée sur l'écoute, la pédagogie et la proximité.</p>
-                        <p>Mon objectif : vous accompagner avec réactivité, transparence et bienveillance, que vous soyez créateur, indépendant ou dirigeant de TPE/PME.</p>
+                        <p>Le cabinet a été fondé en juillet 2023 par Aurélie et Benoît, avec une ambition commune : proposer un accompagnement plus humain, plus clair et plus proche des entrepreneurs.</p>
+                        <p>Avec plus de 22 ans d'expérience dans la profession, Aurélie accompagne les clients avec une approche simple et accessible.</p>
+                        <p>Benoît, expert-comptable et commissaire aux comptes depuis 2009, fort de plus de 25 ans d'expérience, garantit la conformité et la sécurité de vos dossiers, dans le cadre d'une profession réglementée.</p>
+                        <p>Comme vous, nous sommes entrepreneurs. Nous connaissons les réalités du terrain, les obligations administratives et les contraintes… mais aussi les défis et les réussites du quotidien.</p>
+                        <p>C'est cette expérience qui nous permet de vous accompagner de manière concrète, avec des conseils adaptés et une vraie compréhension de vos enjeux.</p>
+                        <p>Notre objectif est simple : vous aider à y voir clair, vous accompagner dans vos démarches et vous soutenir dans le développement de votre activité, avec réactivité, transparence et bienveillance.</p>
                     </div>
 
                     <div class="expert-values">
@@ -1181,9 +1209,10 @@
     ========================================== -->
     <script>
         // ==========================================
-        // Configuration MyUnisoft
+        // Configuration des URLs externes
         // ==========================================
         const MYUNISOFT_URL = "A_REMPLACER";
+        const FACTURATION_URL = "A_REMPLACER";
 
         // ==========================================
         // Menu burger toggle
@@ -1209,22 +1238,13 @@
         });
 
         // ==========================================
-        // MyUnisoft - Gestion des boutons
+        // Gestion des boutons d'espaces externes
         // ==========================================
         function handleMyUnisoftClick(event) {
             const button = event.currentTarget;
 
             if (MYUNISOFT_URL === "A_REMPLACER") {
-                // Afficher le message de configuration
-                const notice = document.getElementById('myunisoft-notice');
-                if (notice) {
-                    notice.style.display = 'block';
-
-                    // Masquer le message après 3 secondes
-                    setTimeout(() => {
-                        notice.style.display = 'none';
-                    }, 3000);
-                }
+                alert("Lien de l'espace comptabilité en cours de configuration.");
                 return;
             }
 
@@ -1243,10 +1263,38 @@
             }, loadingDelay);
         }
 
-        // Attacher les événements aux boutons MyUnisoft
-        const myunisoftBtns = document.querySelectorAll('.myunisoft-btn, #myunisoft-btn-header, #myunisoft-btn-mobile');
+        function handleFacturationClick(event) {
+            const button = event.currentTarget;
+
+            if (FACTURATION_URL === "A_REMPLACER") {
+                alert("Lien de l'espace facturation en cours de configuration.");
+                return;
+            }
+
+            // Si l'URL est configurée, rediriger avec état loading
+            button.classList.add('loading');
+            button.disabled = true;
+
+            const originalText = button.textContent;
+            button.textContent = 'Chargement...';
+
+            // Simuler un délai de chargement (400-600ms)
+            const loadingDelay = 400 + Math.random() * 200;
+
+            setTimeout(() => {
+                window.location.href = FACTURATION_URL;
+            }, loadingDelay);
+        }
+
+        // Attacher les événements aux boutons
+        const myunisoftBtns = document.querySelectorAll('#myunisoft-btn-header, #myunisoft-btn-mobile');
         myunisoftBtns.forEach(btn => {
             btn.addEventListener('click', handleMyUnisoftClick);
+        });
+
+        const facturationBtns = document.querySelectorAll('#facturation-btn-header, #facturation-btn-mobile');
+        facturationBtns.forEach(btn => {
+            btn.addEventListener('click', handleFacturationClick);
         });
 
         // ==========================================
