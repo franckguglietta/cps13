@@ -310,6 +310,16 @@
             background: linear-gradient(135deg, var(--primary) 0%, #004d6d 100%);
             color: var(--white);
             padding: 6rem 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text-content {
             text-align: center;
         }
 
@@ -328,7 +338,6 @@
         .hero-text {
             font-size: 1.125rem;
             color: rgba(255, 255, 255, 0.9);
-            max-width: 700px;
             margin: 0 auto 2.5rem;
         }
 
@@ -340,11 +349,40 @@
             justify-content: center;
         }
 
-        .myunisoft-notice {
-            margin-top: 0.5rem;
-            font-size: 0.875rem;
-            color: var(--accent);
-            font-style: italic;
+        .hero-image {
+            display: none;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            object-fit: cover;
+            max-height: 500px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+            }
+
+            .hero-text-content {
+                text-align: left;
+            }
+
+            .hero-text {
+                margin: 0 0 2.5rem 0;
+            }
+
+            .hero-actions {
+                align-items: flex-start;
+            }
+
+            .hero-image {
+                display: block;
+            }
         }
 
         @media (min-width: 640px) {
@@ -504,12 +542,33 @@
         }
 
         .expert-content {
-            max-width: 900px;
-            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .expert-photo {
+            text-align: center;
+        }
+
+        .expert-photo img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            object-fit: cover;
         }
 
         .expert-info {
             text-align: left;
+        }
+
+        @media (min-width: 768px) {
+            .expert-content {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         .expert-bio {
@@ -879,12 +938,19 @@
     ========================================== -->
     <section id="accueil" class="hero">
         <div class="container">
-            <h1>Un cabinet d'expertise comptable qui vous facilite vraiment la vie</h1>
-            <p class="hero-subtitle">Ici, on simplifie le pilotage de votre activité, que vous soyez en train de créer votre activité ou déjà lancé, nous vous accompagnons sans jargon en comptabilité, fiscalité et social.</p>
-            <p class="hero-text">À vos côtés, avec des outils modernes et évolutifs, pour vous préparer dès aujourd'hui aux enjeux de demain, comme la facturation électronique.</p>
-            <div class="hero-actions">
-                <a href="tel:0982313838" class="btn btn-accent">09 82 31 38 38</a>
-                <a href="#contact" class="btn btn-primary">Demander votre premier rdv gratuit</a>
+            <div class="hero-content">
+                <div class="hero-text-content">
+                    <h1>Un cabinet d'expertise comptable qui vous facilite vraiment la vie</h1>
+                    <p class="hero-subtitle">Ici, on simplifie le pilotage de votre activité, que vous soyez en train de créer votre activité ou déjà lancé, nous vous accompagnons sans jargon en comptabilité, fiscalité et social.</p>
+                    <p class="hero-text">À vos côtés, avec des outils modernes et évolutifs, pour vous préparer dès aujourd'hui aux enjeux de demain, comme la facturation électronique.</p>
+                    <div class="hero-actions">
+                        <a href="tel:0982313838" class="btn btn-accent">09 82 31 38 38</a>
+                        <a href="#contact" class="btn btn-primary">Demander votre premier rdv gratuit</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/comptable_photo.jpg" alt="Cabinet comptable professionnel" loading="eager">
+                </div>
             </div>
         </div>
     </section>
@@ -1017,6 +1083,10 @@
     <section class="expert">
         <div class="container">
             <div class="expert-content">
+                <div class="expert-photo">
+                    <img src="assets/photo_comptable 2.jpg" alt="Équipe comptable professionnelle" loading="lazy">
+                </div>
+
                 <div class="expert-info">
                     <div class="expert-bio">
                         <p>Le cabinet a été fondé en juillet 2023 par Aurélie et Benoît, avec une ambition commune : proposer un accompagnement plus humain, plus clair et plus proche des entrepreneurs.</p>
