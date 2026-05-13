@@ -1163,7 +1163,7 @@
         <div class="container">
             <h2>Une question ? Un projet ? Parlons-en.</h2>
 
-            <form class="contact-form" id="contact-form" novalidate>
+            <form class="contact-form" id="contact-form" action="https://formspree.io/f/xojrblpb" method="POST" novalidate>
                 <div class="form-success" id="form-success" role="alert">
                     Merci pour votre message, nous reviendrons vers vous sous 24h.
                 </div>
@@ -1371,19 +1371,47 @@
                 return;
             }
 
-            // Afficher le message de succès
-            formSuccess.classList.add('show');
+            // Désactiver le bouton pendant l'envoi
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Envoi en cours...';
 
-            // Réinitialiser le formulaire
-            contactForm.reset();
+            // Envoyer les données à Formspree
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Afficher le message de succès
+                    formSuccess.classList.add('show');
 
-            // Faire défiler jusqu'au message de succès
-            formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    // Réinitialiser le formulaire
+                    contactForm.reset();
 
-            // Masquer le message après 5 secondes
-            setTimeout(() => {
-                formSuccess.classList.remove('show');
-            }, 5000);
+                    // Faire défiler jusqu'au message de succès
+                    formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+                    // Masquer le message après 5 secondes
+                    setTimeout(() => {
+                        formSuccess.classList.remove('show');
+                    }, 5000);
+                } else {
+                    alert('Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer.');
+                }
+            })
+            .catch(error => {
+                alert('Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer.');
+            })
+            .finally(() => {
+                // Réactiver le bouton
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            });
         });
 
         // ==========================================
